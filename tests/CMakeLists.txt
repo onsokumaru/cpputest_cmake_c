@@ -14,21 +14,38 @@ set(CPPUTEST_HOME ${CMAKE_CURRENT_SOURCE_DIR}/../build/_deps/cpputest-src/cppute
 
 find_package(CppUTest REQUIRED)
 
-add_executable(mult_test test_mult.cc)
+# add_executable(mult_test test_mult.cc)
+add_executable(test_check check_test.cc)
 
-target_include_directories(mult_test PRIVATE
+# target_include_directories(mult_test PRIVATE
+#     ${CMAKE_CURRENT_SOURCE_DIR}/../include
+#     ${CMAKE_CURRENT_SOURCE_DIR}/../src
+#     ${CMAKE_CURRENT_SOURCE_DIR}/../build/_deps/cpputest-src/include
+#     ${CMAKE_CURRENT_SOURCE_DIR}/../build/_deps/cpputest-src/cpputest_build/lib
+# )
+
+target_include_directories(test_check PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/../include
     ${CMAKE_CURRENT_SOURCE_DIR}/../src
     ${CMAKE_CURRENT_SOURCE_DIR}/../build/_deps/cpputest-src/include
     ${CMAKE_CURRENT_SOURCE_DIR}/../build/_deps/cpputest-src/cpputest_build/lib
 )
 
-target_link_libraries(mult_test PRIVATE --static
+# target_link_libraries(mult_test PRIVATE --static
+# #    CppUTest::CppUTest
+# #    CppUTest::CppUTestExt)
+#     ${CPPUTEST_HOME}/lib/libCppUTest.a
+#     ${CPPUTEST_HOME}/lib/libCppUTestExt.a
+# )
+
+target_link_libraries(test_check PRIVATE --static
 #    CppUTest::CppUTest
 #    CppUTest::CppUTestExt)
     ${CPPUTEST_HOME}/lib/libCppUTest.a
     ${CPPUTEST_HOME}/lib/libCppUTestExt.a
 )
 
-add_test(NAME mult_test COMMAND mult_test)
-set_target_properties(mult_test PROPERTIES WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+# add_test(NAME mult_test COMMAND mult_test)
+add_test(NAME run_test COMMAND test_check)
+# set_target_properties(mult_test PROPERTIES WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+set_target_properties(test_check PROPERTIES WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})

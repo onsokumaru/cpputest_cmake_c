@@ -1,4 +1,4 @@
-/* file: main.cc */
+/* file: main.c */
 
 #include <stdio.h>
 #include "cpputest_cmake_mult.h"

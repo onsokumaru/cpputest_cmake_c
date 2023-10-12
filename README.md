@@ -22,3 +22,5 @@
 - cd to root directory then run :
 
         cmake --build build
+
+---
